@@ -1,0 +1,4 @@
+<Solution>
+  <Project Path="lr1_v6/lr1_v6.csproj" />
+  <Project Path="lr1_v6.Tests/lr1_v6.Tests.csproj" />
+</Solution>

@@ -1,0 +1,14 @@
+{
+  "Title": "Тестування обробки помилок Етапу 1 та Етапу 2 (Варіант 6)",
+  "RowCount": 6,
+  "ColumnCount": 5,
+  "Cells": [
+    { "Cell": "A1", "Row": 0, "Column": 0, "Expression": "10 + * 5" },
+    { "Cell": "B1", "Row": 0, "Column": 1, "Expression": "max(10)" },
+    { "Cell": "A2", "Row": 1, "Column": 0, "Expression": "100 / 0" },
+    { "Cell": "B2", "Row": 1, "Column": 1, "Expression": "25 mod 0" },
+    { "Cell": "A3", "Row": 2, "Column": 0, "Expression": "B3 + 1" },
+    { "Cell": "B3", "Row": 2, "Column": 1, "Expression": "A3 + 1" },
+    { "Cell": "A4", "Row": 3, "Column": 0, "Expression": "Z99 + 10" }
+  ]
+}

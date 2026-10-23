@@ -1,0 +1,14 @@
+{
+  "Title": "Тестування великих чисел та складених виразів (Варіант 6)",
+  "RowCount": 6,
+  "ColumnCount": 5,
+  "Cells": [
+    { "Cell": "A1", "Row": 0, "Column": 0, "Expression": "999999999999999999999999999999" },
+    { "Cell": "B1", "Row": 0, "Column": 1, "Expression": "1" },
+    { "Cell": "C1", "Row": 0, "Column": 2, "Expression": "A1 + B1" },
+    { "Cell": "A2", "Row": 1, "Column": 0, "Expression": "C1 div 1000000000000000" },
+    { "Cell": "B2", "Row": 1, "Column": 1, "Expression": "(A1 + 8) mod 10" },
+    { "Cell": "A3", "Row": 2, "Column": 0, "Expression": "max(2 ^ 50, 10 ^ 15)" },
+    { "Cell": "B3", "Row": 2, "Column": 1, "Expression": "min(2 ^ 50, 10 ^ 15)" }
+  ]
+}

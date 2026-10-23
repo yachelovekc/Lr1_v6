@@ -1,0 +1,232 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="lr1_v6.MainPage"
+             Title="Електронна таблиця — Лабораторна робота №1 (Варіант 6)">
+
+    <ContentPage.MenuBarItems>
+        <MenuBarItem Text="Файл">
+            <MenuFlyoutItem Text="Нова таблиця" Clicked="OnNewTableClicked" />
+            <MenuFlyoutItem Text="Відкрити з файлу..." Clicked="OnOpenFileClicked" />
+            <MenuFlyoutItem Text="Зберегти у файл..." Clicked="OnSaveFileClicked" />
+            <MenuFlyoutSeparator />
+            <MenuFlyoutItem Text="Завантажити демо-приклад (Варіант 6)" Clicked="OnLoadDemoClicked" />
+            <MenuFlyoutSeparator />
+            <MenuFlyoutItem Text="Вихід" Clicked="OnExitClicked" />
+        </MenuBarItem>
+
+        <MenuBarItem Text="Таблиця">
+            <MenuFlyoutItem Text="Додати рядок" Clicked="OnAddRowClicked" />
+            <MenuFlyoutItem Text="Видалити останній рядок" Clicked="OnRemoveRowClicked" />
+            <MenuFlyoutSeparator />
+            <MenuFlyoutItem Text="Додати стовпчик" Clicked="OnAddColumnClicked" />
+            <MenuFlyoutItem Text="Видалити останній стовпчик" Clicked="OnRemoveColumnClicked" />
+            <MenuFlyoutSeparator />
+            <MenuFlyoutItem Text="Перерахувати всі клітинки" Clicked="OnRecalculateClicked" />
+            <MenuFlyoutItem Text="Очистити таблицю" Clicked="OnClearTableClicked" />
+        </MenuBarItem>
+
+        <MenuBarItem Text="Вигляд">
+            <MenuFlyoutItem Text="Режим: ЗНАЧЕННЯ" Clicked="OnSetValueModeClicked" />
+            <MenuFlyoutItem Text="Режим: ВИРАЗ" Clicked="OnSetExpressionModeClicked" />
+            <MenuFlyoutSeparator />
+            <MenuFlyoutItem Text="Перемкнути режим (ЗНАЧЕННЯ / ВИРАЗ)" Clicked="OnToggleModeClicked" />
+        </MenuBarItem>
+
+        <MenuBarItem Text="Довідка">
+            <MenuFlyoutItem Text="Допомога користувачу" Clicked="OnHelpClicked" />
+            <MenuFlyoutItem Text="Про програму" Clicked="OnAboutClicked" />
+        </MenuBarItem>
+    </ContentPage.MenuBarItems>
+
+    <Grid RowDefinitions="Auto, Auto, Auto, *, Auto" Padding="12" RowSpacing="8">
+
+        <Border Grid.Row="0"
+                StrokeShape="RoundRectangle 8"
+                Stroke="#D0D7DE"
+                BackgroundColor="#F6F8FA"
+                Padding="8">
+            <ScrollView Orientation="Horizontal">
+                <HorizontalStackLayout Spacing="6">
+                    <Button Text="Нова"
+                            Clicked="OnNewTableClicked"
+                            BackgroundColor="#2563EB"
+                            TextColor="White"
+                            Padding="10,6" />
+                    <Button Text="Відкрити"
+                            Clicked="OnOpenFileClicked"
+                            BackgroundColor="#2563EB"
+                            TextColor="White"
+                            Padding="10,6" />
+                    <Button Text="Зберегти"
+                            Clicked="OnSaveFileClicked"
+                            BackgroundColor="#2563EB"
+                            TextColor="White"
+                            Padding="10,6" />
+                    <Button Text="Приклад V6"
+                            Clicked="OnLoadDemoClicked"
+                            BackgroundColor="#059669"
+                            TextColor="White"
+                            Padding="10,6" />
+
+                    <BoxView WidthRequest="1" BackgroundColor="#CBD5E1" Margin="4,2" />
+
+                    <Button Text="+ Рядок"
+                            Clicked="OnAddRowClicked"
+                            BackgroundColor="#475569"
+                            TextColor="White"
+                            Padding="10,6" />
+                    <Button Text="- Рядок"
+                            Clicked="OnRemoveRowClicked"
+                            BackgroundColor="#475569"
+                            TextColor="White"
+                            Padding="10,6" />
+                    <Button Text="+ Стовпчик"
+                            Clicked="OnAddColumnClicked"
+                            BackgroundColor="#475569"
+                            TextColor="White"
+                            Padding="10,6" />
+                    <Button Text="- Стовпчик"
+                            Clicked="OnRemoveColumnClicked"
+                            BackgroundColor="#475569"
+                            TextColor="White"
+                            Padding="10,6" />
+
+                    <BoxView WidthRequest="1" BackgroundColor="#CBD5E1" Margin="4,2" />
+
+                    <Button x:Name="ModeToggleButton"
+                            Text="Режим: ЗНАЧЕННЯ"
+                            Clicked="OnToggleModeClicked"
+                            BackgroundColor="#7C3AED"
+                            TextColor="White"
+                            FontAttributes="Bold"
+                            Padding="12,6" />
+
+                    <BoxView WidthRequest="1" BackgroundColor="#CBD5E1" Margin="4,2" />
+
+                    <Button Text="Очистити"
+                            Clicked="OnClearTableClicked"
+                            BackgroundColor="#DC2626"
+                            TextColor="White"
+                            Padding="10,6" />
+                    <Button Text="Допомога"
+                            Clicked="OnHelpClicked"
+                            BackgroundColor="#0284C7"
+                            TextColor="White"
+                            Padding="10,6" />
+                    <Button Text="Про програму"
+                            Clicked="OnAboutClicked"
+                            BackgroundColor="#0284C7"
+                            TextColor="White"
+                            Padding="10,6" />
+                </HorizontalStackLayout>
+            </ScrollView>
+        </Border>
+
+        <Border Grid.Row="1"
+                StrokeShape="RoundRectangle 8"
+                Stroke="#D0D7DE"
+                BackgroundColor="#FFFFFF"
+                Padding="8">
+            <Grid ColumnDefinitions="Auto, Auto, *, Auto" ColumnSpacing="8" VerticalOptions="Center">
+                <Border Grid.Column="0"
+                        StrokeShape="RoundRectangle 6"
+                        BackgroundColor="#1E293B"
+                        Padding="12,6"
+                        VerticalOptions="Center">
+                    <Label x:Name="SelectedCellLabel"
+                           Text="A1"
+                           TextColor="White"
+                           FontAttributes="Bold"
+                           FontSize="15"
+                           HorizontalTextAlignment="Center"
+                           MinimumWidthRequest="44" />
+                </Border>
+
+                <Label Grid.Column="1"
+                       Text="f(x) ="
+                       FontAttributes="Bold"
+                       FontSize="15"
+                       TextColor="#475569"
+                       VerticalOptions="Center" />
+
+                <Entry x:Name="FormulaEntry"
+                       Grid.Column="2"
+                       Placeholder="Введіть вираз (напр. max(B1, 2^3) + 10 div 3, 25 mod 7, 2 ^ 10)"
+                       Completed="OnFormulaEntryCompleted"
+                       FontSize="14"
+                       TextColor="#0F172A" />
+
+                <Button Grid.Column="3"
+                        Text="Застосувати"
+                        Clicked="OnApplyFormulaClicked"
+                        BackgroundColor="#16A34A"
+                        TextColor="White"
+                        FontAttributes="Bold"
+                        Padding="14,6" />
+            </Grid>
+        </Border>
+
+        <Border Grid.Row="2"
+                StrokeShape="RoundRectangle 8"
+                Stroke="#CBD5E1"
+                BackgroundColor="#F8FAFC"
+                Padding="10,6">
+            <Grid ColumnDefinitions="*, *" ColumnSpacing="12">
+                <HorizontalStackLayout Grid.Column="0" Spacing="6" VerticalOptions="Center">
+                    <Label Text="Етап 1 (Синтаксис):"
+                           FontAttributes="Bold"
+                           FontSize="13"
+                           TextColor="#334155" />
+                    <Label x:Name="Stage1StatusLabel"
+                           Text="Очікування введення..."
+                           FontSize="13"
+                           TextColor="#15803D"
+                           LineBreakMode="TailTruncation" />
+                </HorizontalStackLayout>
+
+                <HorizontalStackLayout Grid.Column="1" Spacing="6" VerticalOptions="Center">
+                    <Label Text="Етап 2 (Обчислення):"
+                           FontAttributes="Bold"
+                           FontSize="13"
+                           TextColor="#334155" />
+                    <Label x:Name="Stage2StatusLabel"
+                           Text="—"
+                           FontSize="13"
+                           TextColor="#0F172A"
+                           LineBreakMode="TailTruncation" />
+                </HorizontalStackLayout>
+            </Grid>
+        </Border>
+
+        <Border Grid.Row="3"
+                StrokeShape="RoundRectangle 8"
+                Stroke="#CBD5E1"
+                BackgroundColor="#FFFFFF"
+                Padding="4">
+            <ScrollView Orientation="Both">
+                <Grid x:Name="SpreadsheetGrid"
+                      RowSpacing="1"
+                      ColumnSpacing="1"
+                      BackgroundColor="#CBD5E1"
+                      Padding="1" />
+            </ScrollView>
+        </Border>
+
+        <Grid Grid.Row="4" ColumnDefinitions="*, Auto" Padding="4,2">
+            <Label x:Name="FooterStatusLabel"
+                   Grid.Column="0"
+                   Text="Готово. Варіант 6: +, -, *, /, div, mod, ^, max(x,y), min(x,y)."
+                   FontSize="12"
+                   TextColor="#475569" />
+            <Label x:Name="DimensionsLabel"
+                   Grid.Column="1"
+                   Text="Розмір: 8 × 6"
+                   FontSize="12"
+                   FontAttributes="Bold"
+                   TextColor="#334155" />
+        </Grid>
+
+    </Grid>
+
+</ContentPage>

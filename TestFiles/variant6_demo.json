@@ -1,0 +1,21 @@
+{
+  "Title": "Демонстраційна таблиця (Варіант 6: +, -, *, /, div, mod, ^, max, min)",
+  "RowCount": 8,
+  "ColumnCount": 6,
+  "Cells": [
+    { "Cell": "A1", "Row": 0, "Column": 0, "Expression": "25" },
+    { "Cell": "B1", "Row": 0, "Column": 1, "Expression": "7" },
+    { "Cell": "C1", "Row": 0, "Column": 2, "Expression": "(A1 + B1) * 2 - 4" },
+    { "Cell": "D1", "Row": 0, "Column": 3, "Expression": "A1 / 4" },
+    { "Cell": "A2", "Row": 1, "Column": 0, "Expression": "A1 div B1" },
+    { "Cell": "B2", "Row": 1, "Column": 1, "Expression": "A1 mod B1" },
+    { "Cell": "C2", "Row": 1, "Column": 2, "Expression": "A2 * B1 + B2" },
+    { "Cell": "A3", "Row": 2, "Column": 0, "Expression": "2 ^ 3 ^ 2" },
+    { "Cell": "B3", "Row": 2, "Column": 1, "Expression": "(A2 + 1) ^ 3" },
+    { "Cell": "A4", "Row": 3, "Column": 0, "Expression": "max(C1, B3)" },
+    { "Cell": "B4", "Row": 3, "Column": 1, "Expression": "min(A1, A2 * 5)" },
+    { "Cell": "C4", "Row": 3, "Column": 2, "Expression": "max(A4, B4) - min(A4, B4)" },
+    { "Cell": "A5", "Row": 4, "Column": 0, "Expression": "100000000000000000000000000000 + 25" },
+    { "Cell": "B5", "Row": 4, "Column": 1, "Expression": "2 ^ 80" }
+  ]
+}
